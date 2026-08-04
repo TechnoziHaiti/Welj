@@ -258,8 +258,11 @@ export default function Navbar() {
             {/* Mobile Dropdown: Prix et Shipping */}
             <div className="w-full flex flex-col items-center">
               <button 
-                onClick={() => setIsMobilePricingOpen(!isMobilePricingOpen)}
-                className={`w-full flex items-center justify-center gap-2 rounded-full py-3 px-4 transition-all duration-300 border ${pathname.startsWith('/pricing') ? 'bg-red-50 border-red-200 text-red-600' : 'bg-white border-gray-200 text-[#334155] hover:bg-gray-100 hover:text-red-600'}`}
+                onClick={() => {
+                  setIsMobilePricingOpen(!isMobilePricingOpen);
+                  if (!isMobilePricingOpen) setIsMobileResourcesOpen(false);
+                }}
+                className={`flex items-center gap-2 transition-colors ${pathname.startsWith('/pricing') ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}
               >
                 <span>{t('nav.pricing_shipping')}</span>
                 <ChevronDown size={20} className={`transition-transform duration-300 ${isMobilePricingOpen ? 'rotate-180' : ''}`} />
@@ -267,20 +270,20 @@ export default function Navbar() {
               
               {/* Expandable sub-menu */}
               {isMobilePricingOpen && (
-                <div className="flex flex-col items-center space-y-3 mt-4 w-full bg-white border border-gray-200 rounded-[32px] p-4 shadow-sm text-center">
-                  <Link href="/procedures" onClick={() => setIsMobileMenuOpen(false)} className="w-full text-[15px] font-medium text-gray-500 hover:text-red-600 py-2 rounded-xl transition-colors">
+                <div className="flex flex-col items-center space-y-4 mt-3 w-full animate-in slide-in-from-top-1 fade-in duration-200">
+                  <Link href="/procedures" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
                     {t('nav.procedures')}
                   </Link>
-                  <Link href="/calculator" onClick={() => setIsMobileMenuOpen(false)} className="w-full text-[15px] font-medium text-gray-500 hover:text-red-600 py-2 rounded-xl transition-colors">
+                  <Link href="/calculator" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
                     {t('nav.calculator')}
                   </Link>
-                  <Link href="/pricing" onClick={() => setIsMobileMenuOpen(false)} className="w-full text-[15px] font-medium text-gray-500 hover:text-red-600 py-2 rounded-xl transition-colors">
+                  <Link href="/pricing" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
                     {t('nav.pricing_options')}
                   </Link>
-                  <Link href="/shipping-items" onClick={() => setIsMobileMenuOpen(false)} className="w-full text-[15px] font-medium text-gray-500 hover:text-red-600 py-2 rounded-xl transition-colors">
+                  <Link href="/shipping-items" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
                     {t('nav.forbidden_items')}
                   </Link>
-                  <Link href="/track" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-bold text-gray-600 hover:text-red-600 flex items-center gap-2 mt-2 text-left">
+                  <Link href="/track" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-bold text-gray-600 hover:text-red-600 flex items-center justify-center gap-2 mt-1">
                     <PackageSearch size={16} className="text-red-500" />
                     <span>{t('nav.track')}</span>
                   </Link>
@@ -291,7 +294,10 @@ export default function Navbar() {
             {/* Mobile Dropdown: Ressources et aide */}
             <div className="w-full flex flex-col items-center">
               <button 
-                onClick={() => setIsMobileResourcesOpen(!isMobileResourcesOpen)}
+                onClick={() => {
+                  setIsMobileResourcesOpen(!isMobileResourcesOpen);
+                  if (!isMobileResourcesOpen) setIsMobilePricingOpen(false);
+                }}
                 className={`flex items-center gap-2 transition-colors ${pathname.startsWith('/resources') ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}
               >
                 <HelpCircle size={20} />
@@ -301,11 +307,11 @@ export default function Navbar() {
               
               {/* Expandable sub-menu */}
               {isMobileResourcesOpen && (
-                <div className="flex flex-col items-start space-y-4 mt-2 w-full pl-[25%] sm:pl-[35%] animate-in slide-in-from-top-1 fade-in duration-200">
-                  <Link href="/resources" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600 text-left">
+                <div className="flex flex-col items-center space-y-4 mt-3 w-full animate-in slide-in-from-top-1 fade-in duration-200">
+                  <Link href="/resources" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
                     {t('nav.tips')}
                   </Link>
-                  <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600 text-left">
+                  <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
                     {t('nav.contact')}
                   </Link>
                 </div>
