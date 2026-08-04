@@ -58,13 +58,18 @@ export default function ShippingItemsPage() {
     <div className="min-h-screen bg-gray-50 pt-32 pb-24 font-sans flex flex-col">
       
       {/* Top Section - Title and Image */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 mb-12 text-center flex-shrink-0">
-        <div className="flex items-center justify-center gap-4 md:gap-8 max-w-4xl mx-auto mb-4">
-          <div className="h-[2px] bg-gradient-to-r from-transparent to-[#022f4b] flex-grow rounded-full"></div>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-[#022f4b] tracking-tight whitespace-nowrap">
-            {t('shipping.title')}
-          </h1>
-          <div className="h-[2px] bg-gradient-to-l from-transparent to-[#022f4b] flex-grow rounded-full"></div>
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12 mb-12 text-center flex-shrink-0">
+        <div className="text-center mb-10 md:mb-12">
+          <div className="flex items-center justify-center gap-4 md:gap-8 max-w-4xl mx-auto mb-4">
+            <div className="h-[2px] bg-gradient-to-r from-transparent to-[#022f4b] flex-grow rounded-full"></div>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-[#022f4b] tracking-tight whitespace-nowrap">
+              {t('shipping.title')}
+            </h1>
+            <div className="h-[2px] bg-gradient-to-l from-transparent to-[#022f4b] flex-grow rounded-full"></div>
+          </div>
+          <p className="text-gray-500 max-w-2xl mx-auto">
+            {t('shipping.subtitle')}
+          </p>
         </div>
         
         <div className="inline-block bg-[#e12229] text-white px-6 py-2 rounded-full mb-10 shadow-md">

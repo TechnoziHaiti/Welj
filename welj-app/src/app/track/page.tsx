@@ -245,13 +245,11 @@ export default function TrackPage() {
               {faqs.map((faq, index) => (
                 <div 
                   key={index}
-                  className={`border rounded-2xl transition-all duration-300 overflow-hidden ${
-                    openFaq === index ? 'border-[#021b33]/20 bg-gray-50/50' : 'border-gray-100 bg-white hover:border-gray-200'
-                  }`}
+                  className="transition-all duration-300"
                 >
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
+                    className={`w-full text-left px-6 py-5 flex items-center justify-between border-b border-gray-100 focus:outline-none ${openFaq === index ? 'bg-gray-50/50' : 'bg-white hover:bg-gray-50'}`}
                   >
                     <span className={`font-bold text-base ${openFaq === index ? 'text-[#021b33]' : 'text-gray-800'}`}>
                       {faq.title}

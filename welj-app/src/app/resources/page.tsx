@@ -85,12 +85,12 @@ export default function ResourcesPage() {
           return (
             <div 
               key={tip.id} 
-              className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center`}
+              className={`grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center py-8`}
             >
               
               {/* Image Container */}
               <div className={`w-full flex justify-center ${isEven ? 'md:order-2 md:justify-end' : 'md:order-1 md:justify-start'}`}>
-                <div className="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-white">
+                <div className="relative w-full max-w-[20rem] sm:max-w-sm aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-white">
                   <Image 
                     src={tip.image} 
                     alt={t(tip.titleKey)} 
@@ -102,12 +102,12 @@ export default function ResourcesPage() {
 
               {/* Text Container */}
               <div className={`flex flex-col justify-center ${isEven ? 'md:order-1' : 'md:order-2'}`}>
-                <h3 className="text-xl md:text-2xl font-bold text-[#022f4b] mb-3">
+                <h3 className="text-xl md:text-2xl font-bold text-[#022f4b] mb-4">
                   {t(tip.titleKey)}
                 </h3>
                 
                 {/* Underline matching the reference photo */}
-                <div className="w-full h-[3px] bg-[#e12229] rounded-full mb-4 opacity-90"></div>
+                <div className="w-full h-[3px] bg-[#e12229] rounded-full mb-5 opacity-90"></div>
                 
                 <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                   {t(tip.descriptionKey)}

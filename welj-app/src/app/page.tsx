@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { Plane, Ship, Package, MapPin, Truck, Globe2, UserPlus, ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
+const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.welj.welj_flutter_user&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRleATXAqhwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABp1df_MA9aDfcaCYKVcQO5Z4aBXdhCLby1EC93clafyeJwZqGWJYIEsZTeKxh_aem_UJdkg5m8JttTIdKAitbJkw&pli=1';
+const appStoreUrl = 'https://apps.apple.com/us/app/welj/id1666198727';
+
 const partners = [
   { name: 'Alibaba', image: '/partners/alibaba.png', url: 'https://www.alibaba.com' },
   { name: 'AliExpress', image: '/partners/aliexpress.png', url: 'https://www.aliexpress.com' },
@@ -160,6 +163,26 @@ export default function Home() {
     return () => clearInterval(mapTimer);
   }, []);
 
+  const [downloadUrl, setDownloadUrl] = useState(playStoreUrl);
+
+  useEffect(() => {
+    if (typeof navigator !== 'undefined') {
+      const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+
+      if (/android/i.test(userAgent)) {
+        setDownloadUrl(playStoreUrl);
+        return;
+      }
+
+      if (/iPad|iPhone|iPod/.test(userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+        setDownloadUrl(appStoreUrl);
+        return;
+      }
+    }
+
+    setDownloadUrl(playStoreUrl);
+  }, []);
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
@@ -169,7 +192,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
+    <div className="min-h-screen bg-gray-50 flex flex-col font-sans overflow-x-hidden">
       {/* Hero Carousel Section */}
       <section className="relative text-white overflow-hidden min-h-screen flex items-end group bg-[#021f3a] w-full pb-20">
         {/* Background Images with smooth fade transition */}
@@ -213,13 +236,13 @@ export default function Home() {
 
         {/* Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full pt-28 pb-4 flex flex-col items-center sm:items-start text-center sm:text-left">
-          <div className="w-full lg:w-[60%] transition-all duration-700 flex flex-col items-center sm:items-start">
+          <div className="w-full max-w-full lg:max-w-3xl lg:w-[60%] transition-all duration-700 flex flex-col items-center sm:items-start">
             {slides[currentSlide].showText && (
               <>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-md">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-md max-w-full break-words">
                   {currentSlide === 0 ? t('home.hero_title') : slides[currentSlide].title}
                 </h1>
-                <p className="text-lg lg:text-xl mb-8 leading-relaxed text-white font-light max-w-xl drop-shadow">
+                <p className="text-base sm:text-lg lg:text-xl mb-8 leading-relaxed text-white font-light max-w-xl drop-shadow">
                   {currentSlide === 0 ? t('home.hero_subtitle') : slides[currentSlide].subtitle}
                 </p>
               </>
@@ -227,8 +250,10 @@ export default function Home() {
             <div className="flex justify-center sm:justify-start w-full gap-4">
               {slides[currentSlide].buttonType === 'download' ? (
                 <a 
-                  href="#" 
-                  className="bg-red-600 hover:bg-red-700 text-white px-7 py-3.5 rounded-full font-bold text-sm shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2.5 cursor-pointer"
+                  href={downloadUrl} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-red-600 hover:bg-red-700 text-white px-7 py-3.5 rounded-full font-bold text-sm shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2.5"
                 >
                   <Download size={18} />
                   <span>{t('home.download_app')}</span>
@@ -393,7 +418,7 @@ export default function Home() {
             </div>
 
             {/* Right: Warehouses List in Black Font */}
-            <div className="lg:col-span-5 flex flex-col justify-center space-y-4 items-center text-center lg:items-start lg:text-left">
+<div className="lg:col-span-5 mt-10 lg:mt-0 flex flex-col justify-center space-y-4 items-center text-center lg:items-start lg:text-left">
               <h3 className="text-lg font-bold text-gray-900 mb-2">{t('home.branches_haiti')}</h3>
               
               {mapBranches.map((branch, idx) => (
@@ -604,7 +629,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-5 flex flex-col justify-center space-y-4 items-center text-center lg:items-start lg:text-left">
+                <div className="lg:col-span-5 mt-10 lg:mt-0 flex flex-col justify-center space-y-4 items-center text-center lg:items-start lg:text-left">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Nos Agences aux États-Unis :</h3>
                   
                   {usaBranches.map((branch, idx) => (
@@ -707,7 +732,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-5 flex flex-col justify-center space-y-4 items-center text-center lg:items-start lg:text-left">
+                <div className="lg:col-span-5 mt-10 lg:mt-0 flex flex-col justify-center space-y-4 items-center text-center lg:items-start lg:text-left">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Nos Agences en République Dominicaine :</h3>
                   
                   {rdBranches.map((branch, idx) => (

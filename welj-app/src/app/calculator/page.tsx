@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Tag, MapPin, Plane, Ship, ArrowRight, ChevronDown, PackageCheck } from 'lucide-react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
@@ -26,9 +26,10 @@ export default function CalculatorPage() {
   const [hasCalculated, setHasCalculated] = useState(false);
   const [airPrice, setAirPrice] = useState(0);
   const [seaPrice, setSeaPrice] = useState(0);
+  const [isCalculating, setIsCalculating] = useState(false);
   const { t } = useLanguage();
 
-  const calculatePrice = (e: React.FormEvent) => {
+  const calculatePrice = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const w = parseFloat(weight) || 0;
     let chargeableWeight = w;
@@ -43,11 +44,16 @@ export default function CalculatorPage() {
 
     if (chargeableWeight <= 0) return;
 
-    // Avion = $4 / lb
-    // Bateau = $2.5 / lb
-    setAirPrice(chargeableWeight * 4);
-    setSeaPrice(chargeableWeight * 2.5);
-    setHasCalculated(true);
+    setIsCalculating(true);
+
+    setTimeout(() => {
+      // Avion = $4 / lb
+      // Bateau = $2.5 / lb
+      setAirPrice(chargeableWeight * 4);
+      setSeaPrice(chargeableWeight * 2.5);
+      setHasCalculated(true);
+      setIsCalculating(false);
+    }, 500);
   };
 
   return (
@@ -143,10 +149,21 @@ export default function CalculatorPage() {
               {/* Submit Button */}
               <button 
                 type="submit"
-                className="w-full bg-[#e12229] hover:bg-red-700 text-white font-bold px-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 group whitespace-nowrap h-[46px]"
+                disabled={isCalculating}
+                className="sm:w-auto w-full bg-[#e12229] hover:bg-red-700 text-white font-bold px-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center gap-2 group whitespace-nowrap h-[46px]"
               >
-                {t('calc.get_rates')}
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                {isCalculating ? (
+                  <div className="flex space-x-1.5 items-center justify-center h-6">
+                    <div className="w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                    <div className="w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                    <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
+                  </div>
+                ) : (
+                  <>
+                    {t('calc.get_rates')}
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </button>
 
             </div>
@@ -156,9 +173,11 @@ export default function CalculatorPage() {
               <button 
                 type="button"
                 onClick={() => setShowDimensions(!showDimensions)}
-                className="text-sm text-[#022f4b] hover:text-blue-700 transition-colors flex items-center gap-1 font-medium"
+                className="text-sm text-[#022f4b] hover:text-blue-700 transition-colors inline-flex flex-wrap items-center gap-1 font-medium"
               >
-                {t('calc.dim_msg1')} <span className="text-[#e12229] underline underline-offset-2">{t('calc.dim_msg2')}</span> {t('calc.dim_msg3')}
+                <span>{t('calc.dim_msg1')}</span>
+                <span className="text-[#e12229] underline underline-offset-2">{t('calc.dim_msg2')}</span>
+                <span>{t('calc.dim_msg3')}</span>
               </button>
             </div>
 
