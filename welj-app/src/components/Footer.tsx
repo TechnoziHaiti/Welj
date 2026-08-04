@@ -25,8 +25,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-8 border-b border-gray-800/80">
           
           {/* Col 1: Brand, Socials & App Downloads (3 cols) */}
-          <div className="lg:col-span-3 flex flex-col justify-between space-y-4">
-            <div>
+          <div className="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left space-y-4">
+            <div className="flex flex-col items-center lg:items-start">
               {/* Logo without white background box */}
               <div className="mb-4">
                 <Link href="/" className="inline-block hover:scale-105 transition-transform duration-300">
@@ -46,9 +46,9 @@ export default function Footer() {
             </div>
 
             {/* Social Media Links - No Background Circles */}
-            <div className="space-y-2">
+            <div className="space-y-2 flex flex-col items-start w-max">
               <h4 className="text-[11px] font-bold uppercase tracking-wider text-red-500">Suivez-nous</h4>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center justify-start space-x-4">
                 {/* Instagram */}
                 <a 
                   href="https://www.instagram.com/weljexpress?igsh=MTZtN2J0cnFqbnFkMQ==" 
@@ -94,9 +94,9 @@ export default function Footer() {
             </div>
 
             {/* Mobile App Download Buttons */}
-            <div className="space-y-2 pt-1">
+            <div className="space-y-2 pt-1 flex flex-col items-start w-max">
               <h4 className="text-[11px] font-bold uppercase tracking-wider text-gray-400">Téléchargez l'application</h4>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap justify-start gap-2.5">
                 {/* Google Play (Official Google Play Arrow SVG Image) */}
                 <a 
                   href="https://play.google.com/store/apps/details?id=com.welj.welj_flutter_user&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRleATXAqhwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABp1df_MA9aDfcaCYKVcQO5Z4aBXdhCLby1EC93clafyeJwZqGWJYIEsZTeKxh_aem_UJdkg5m8JttTIdKAitbJkw&pli=1"
@@ -138,26 +138,26 @@ export default function Footer() {
           </div>
 
           {/* Col 2: Navigation Links (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
+          <div className="lg:col-span-2 space-y-3 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h3 className="text-xs font-bold uppercase tracking-wider text-red-500 border-b border-gray-800 pb-1.5">{t('footer.links')}</h3>
-            <ul className="space-y-2 text-xs text-gray-300 font-medium">
+            <ul className="space-y-2 text-xs text-gray-300 font-medium flex flex-col items-start w-max">
               <li>
-                <Link href="/" className="hover:text-red-400 transition-colors flex items-center gap-1.5">
+                <Link href="/" className="hover:text-red-400 transition-colors flex items-center justify-start gap-1.5">
                   <ArrowRight size={11} className="text-red-500" />
                   <span>{t('nav.home')}</span>
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-red-400 transition-colors flex items-center gap-1.5">
+                <Link href="/about" className="hover:text-red-400 transition-colors flex items-center justify-start gap-1.5">
                   <ArrowRight size={11} className="text-red-500" />
                   <span>{t('nav.about')}</span>
                 </Link>
               </li>
               {/* Prix et Shipping with Click Dropdown */}
-              <li className="relative">
+              <li className="relative flex flex-col items-start w-full">
                 <button 
                   onClick={() => setIsPricingOpen(!isPricingOpen)}
-                  className="hover:text-red-400 transition-colors flex items-center gap-1.5 w-full text-left"
+                  className="hover:text-red-400 transition-colors flex items-center justify-start gap-1.5 w-full text-left"
                 >
                   <ArrowRight size={11} className="text-red-500 flex-shrink-0" />
                   <span>{t('nav.pricing_shipping')}</span>
@@ -165,43 +165,43 @@ export default function Footer() {
                 </button>
                 
                 {/* Dropdown Menu (Appears above) */}
-                <div className={`absolute left-0 bottom-full mb-2 w-56 bg-[#0b1726] border border-gray-700/80 rounded-xl p-2 shadow-2xl z-50 transition-all duration-300 ${isPricingOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
-                  <div className="flex flex-col space-y-1">
-                    <Link href="/procedures" className="text-gray-300 font-medium hover:bg-[#122135] hover:text-red-400 px-3 py-2 rounded-lg transition-colors text-xs flex items-center">
+                <div className={`absolute left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 bottom-full mb-2 w-56 bg-[#0b1726] border border-gray-700/80 rounded-xl p-2 shadow-2xl z-50 transition-all duration-300 ${isPricingOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
+                  <div className="flex flex-col space-y-1 text-left">
+                    <Link href="/procedures" className="text-gray-300 font-medium hover:bg-[#122135] hover:text-red-400 px-3 py-2 rounded-lg transition-colors text-xs flex items-center justify-start">
                       <span>{t('nav.procedures')}</span>
                     </Link>
-                    <Link href="/pricing" className="text-gray-300 font-medium hover:bg-[#122135] hover:text-red-400 px-3 py-2 rounded-lg transition-colors text-xs flex items-center">
+                    <Link href="/pricing" className="text-gray-300 font-medium hover:bg-[#122135] hover:text-red-400 px-3 py-2 rounded-lg transition-colors text-xs flex items-center justify-start">
                       <span>{t('nav.pricing_options')}</span>
                     </Link>
-                    <Link href="/shipping-items" className="text-gray-300 font-medium hover:bg-[#122135] hover:text-red-400 px-3 py-2 rounded-lg transition-colors text-xs flex items-center">
+                    <Link href="/shipping-items" className="text-gray-300 font-medium hover:bg-[#122135] hover:text-red-400 px-3 py-2 rounded-lg transition-colors text-xs flex items-center justify-start">
                       <span>{t('nav.forbidden_items')}</span>
                     </Link>
-                    <Link href="/track" className="text-gray-300 font-bold hover:bg-[#122135] hover:text-red-400 px-3 py-2 rounded-lg transition-colors text-xs flex items-center border-t border-gray-700/80 mt-1 pt-2">
+                    <Link href="/track" className="text-gray-300 font-bold hover:bg-[#122135] hover:text-red-400 px-3 py-2 rounded-lg transition-colors text-xs flex items-center justify-start border-t border-gray-700/80 mt-1 pt-2">
                       <span>{t('nav.track')}</span>
                     </Link>
                   </div>
                 </div>
               </li>
               <li>
-                <Link href="/resources" className="hover:text-red-400 transition-colors flex items-center gap-1.5">
+                <Link href="/resources" className="hover:text-red-400 transition-colors flex items-center justify-start gap-1.5">
                   <ArrowRight size={11} className="text-red-500" />
                   <span>{t('nav.resources_help')}</span>
                 </Link>
               </li>
               <li>
-                <Link href="/track" className="hover:text-red-400 transition-colors flex items-center gap-1.5">
+                <Link href="/track" className="hover:text-red-400 transition-colors flex items-center justify-start gap-1.5">
                   <ArrowRight size={11} className="text-red-500" />
                   <span>{t('nav.track')}</span>
                 </Link>
               </li>
               <li className="pt-1.5 border-t border-gray-800/80">
-                <a href="https://www.welj-ht.com/user/login" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors flex items-center gap-1.5 text-white font-semibold">
+                <a href="https://www.welj-ht.com/user/login" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors flex items-center justify-start gap-1.5 text-white font-semibold">
                   <ExternalLink size={11} className="text-blue-400" />
                   <span>{t('nav.login')}</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.welj-ht.com/user/signup" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors flex items-center gap-1.5 text-red-400 font-bold">
+                <a href="https://www.welj-ht.com/user/signup" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors flex items-center justify-start gap-1.5 text-red-400 font-bold">
                   <ExternalLink size={11} className="text-red-500" />
                   <span>{t('nav.signup')}</span>
                 </a>
@@ -210,40 +210,40 @@ export default function Footer() {
           </div>
 
           {/* Col 3: Agences & Entrepôts (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
+          <div className="lg:col-span-3 space-y-3 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h3 className="text-xs font-bold uppercase tracking-wider text-red-500 border-b border-gray-800 pb-1.5">{t('footer.agencies')}</h3>
-            <ul className="space-y-2.5 text-xs text-gray-300">
-              <li className="flex items-start gap-2">
+            <ul className="space-y-2.5 text-xs text-gray-300 flex flex-col items-start w-max">
+              <li className="flex items-start justify-start gap-2">
                 <MapPin size={15} className="text-gray-300 flex-shrink-0 mt-0.5" />
-                <div>
+                <div className="text-left">
                   <strong className="text-white block font-semibold text-xs">Port-au-Prince</strong>
                   <span className="text-gray-400 text-[11px]">#7, Delmas 95 & Tabarre 36</span>
                 </div>
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start justify-start gap-2">
                 <MapPin size={15} className="text-gray-300 flex-shrink-0 mt-0.5" />
-                <div>
+                <div className="text-left">
                   <strong className="text-white block font-semibold text-xs">Cap-Haïtien</strong>
                   <span className="text-gray-400 text-[11px]">Rue 19 D, Cap-Haïtien</span>
                 </div>
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start justify-start gap-2">
                 <MapPin size={15} className="text-gray-300 flex-shrink-0 mt-0.5" />
-                <div>
+                <div className="text-left">
                   <strong className="text-white block font-semibold text-xs">Ouanaminthe</strong>
                   <span className="text-gray-400 text-[11px]">42, Rue vallières, Ouanaminthe</span>
                 </div>
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start justify-start gap-2">
                 <MapPin size={15} className="text-gray-300 flex-shrink-0 mt-0.5" />
-                <div>
+                <div className="text-left">
                   <strong className="text-white block font-semibold text-xs">Les Cayes</strong>
                   <span className="text-gray-400 text-[11px]">Bourjolly #7, Route Nationale</span>
                 </div>
               </li>
-              <li className="flex items-start gap-2 pt-0.5">
+              <li className="flex items-start justify-start gap-2 pt-0.5">
                 <MapPin size={15} className="text-gray-300 flex-shrink-0 mt-0.5" />
-                <div>
+                <div className="text-left">
                   <strong className="text-white block font-semibold text-xs">Floride, USA (No Tax)</strong>
                   <span className="text-gray-400 text-[11px]">Entrepôt d'expédition internationale</span>
                 </div>
@@ -252,26 +252,26 @@ export default function Footer() {
           </div>
 
           {/* Col 4: Contacts & Assistance (4 cols) */}
-          <div className="lg:col-span-4 space-y-3">
+          <div className="lg:col-span-4 space-y-3 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h3 className="text-xs font-bold uppercase tracking-wider text-red-500 border-b border-gray-800 pb-1.5">{t('footer.customer_service')}</h3>
-            <p className="text-xs text-gray-300 leading-relaxed font-light">
+            <p className="text-xs text-gray-300 leading-relaxed font-light mx-auto lg:mx-0">
               {t('footer.questions_desc')}
             </p>
             
-            <div>
-              <div className="flex items-center gap-1.5 text-white font-bold text-xs mb-2">
+            <div className="w-max mx-auto lg:mx-0 flex flex-col items-start">
+              <div className="flex items-center justify-start gap-1.5 text-white font-bold text-xs mb-2 w-full">
                 <Phone size={13} className="text-red-500" />
                 <span>{t('footer.direct_lines')}</span>
               </div>
-              <div className="grid grid-cols-1 gap-y-1 text-xs font-semibold text-gray-200">
+              <div className="grid grid-cols-1 gap-y-1 text-xs font-semibold text-gray-200 w-full">
                 {phoneNumbers.map((phone, idx) => (
                   <a 
                     key={idx} 
                     href={`tel:${phone.replace(/\s+/g, '')}`} 
-                    className="hover:text-red-400 transition-colors flex items-center justify-between py-0.5 border-b border-gray-800/50 last:border-none"
+                    className="hover:text-red-400 transition-colors flex items-center justify-between gap-4 py-0.5 border-b border-gray-800/50 last:border-none w-full"
                   >
-                    <span className="text-gray-300 hover:text-white text-[11px]">{phone}</span>
-                    <span className="text-[10px] text-gray-400 font-normal">Appel / WA</span>
+                    <span className="text-gray-300 hover:text-white text-[11px] whitespace-nowrap">{phone}</span>
+                    <span className="text-[10px] text-gray-400 font-normal whitespace-nowrap">Appel / WA</span>
                   </a>
                 ))}
               </div>

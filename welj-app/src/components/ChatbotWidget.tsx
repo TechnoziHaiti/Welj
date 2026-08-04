@@ -129,40 +129,47 @@ export default function ChatbotWidget() {
       <div 
         className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 w-[90vw] sm:w-[380px] h-[600px] max-h-[85vh] bg-white/95 backdrop-blur-xl border border-white/40 shadow-[0_15px_40px_rgba(0,0,0,0.15)] rounded-2xl flex flex-col overflow-hidden transition-all duration-400 transform origin-bottom-right ${isOpen ? 'scale-100 opacity-100 visible' : 'scale-50 opacity-0 invisible pointer-events-none'}`}
       >
-        {/* Header */}
-        <div className="bg-gradient-to-r from-[#021f3a] to-[#022f4b] p-4 text-white shrink-0 relative shadow-md">
-          <div className="flex items-center justify-between mb-4">
+        {/* Header with Tabs integrated */}
+        <div className="bg-white px-4 pt-4 pb-3 shrink-0 border-b border-gray-100">
+          <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center border-2 border-[#1E63FF] p-1 overflow-hidden shadow-sm">
-                <img src="/logo.png" alt="WELJ Logo" className="w-full h-full object-contain" />
-              </div>
+              <img src="/logo.png" alt="WELJ Logo" className="h-8 object-contain" />
               <div>
-                <h3 className="font-bold text-lg tracking-wide">{t('chatbot.title')}</h3>
-                <div className="flex items-center gap-1.5 text-xs text-cyan-200">
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                  En ligne
+                <h3 className="font-bold text-[15px] text-[#022f4b] leading-tight">{t('chatbot.title')}</h3>
+                <div className="flex items-center gap-1.5 mt-0.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                  <span className="text-[11px] text-gray-400 font-medium">En ligne</span>
                 </div>
               </div>
             </div>
             <button 
               onClick={() => setIsOpen(false)}
-              className="text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
             >
-              <X size={20} />
+              <X size={18} />
             </button>
           </div>
 
-          {/* Tabs */}
-          <div className="flex bg-black/20 p-1 rounded-xl">
+          {/* Tab Bar — sliding pill effect */}
+          <div className="relative flex bg-slate-200/70 p-1 rounded-full">
+            {/* Sliding white pill */}
+            <div
+              className="absolute top-1 left-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-full shadow-md transition-transform duration-300 ease-in-out"
+              style={{ transform: activeTab === 'ai' ? 'translateX(100%)' : 'translateX(0)' }}
+            />
             <button 
               onClick={() => setActiveTab('faq')}
-              className={`flex-1 py-1.5 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-all duration-300 ${activeTab === 'faq' ? 'bg-white text-[#022f4b] shadow-sm' : 'text-white/80 hover:text-white'}`}
+              className={`relative flex-1 py-1.5 text-[13px] font-bold rounded-full flex items-center justify-center z-10 transition-colors duration-300 ${
+                activeTab === 'faq' ? 'text-[#022f4b]' : 'text-slate-500 hover:text-slate-800'
+              }`}
             >
               {t('chatbot.tab_faq')}
             </button>
             <button 
               onClick={() => setActiveTab('ai')}
-              className={`flex-1 py-1.5 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-all duration-300 ${activeTab === 'ai' ? 'bg-white text-[#022f4b] shadow-sm' : 'text-white/80 hover:text-white'}`}
+              className={`relative flex-1 py-1.5 text-[13px] font-bold rounded-full flex items-center justify-center z-10 transition-colors duration-300 ${
+                activeTab === 'ai' ? 'text-[#022f4b]' : 'text-slate-500 hover:text-slate-800'
+              }`}
             >
               {t('chatbot.tab_ai')}
             </button>

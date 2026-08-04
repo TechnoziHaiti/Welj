@@ -58,14 +58,14 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-[85vh] bg-white pt-36 pb-24 font-sans flex flex-col items-center">
-      <div className="max-w-5xl w-full mx-auto px-6 sm:px-8 lg:px-12">
+    <div className="min-h-[85vh] bg-gray-50/50 md:bg-white pt-32 md:pt-36 pb-24 font-sans flex flex-col items-center">
+      <div className="max-w-5xl w-full mx-auto px-4 sm:px-8 lg:px-12">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-24">
           
           {/* Left Column: Form */}
-          <div>
-            <h2 className="text-xl md:text-2xl font-black text-gray-900 mb-10 uppercase tracking-widest">
+          <div className="bg-white md:bg-transparent p-6 sm:p-8 md:p-0 rounded-3xl md:rounded-none shadow-[0_4px_20px_rgb(0,0,0,0.04)] md:shadow-none border border-gray-100 md:border-none order-last md:order-first">
+            <h2 className="text-xl md:text-2xl font-black text-gray-900 mb-8 md:mb-10 uppercase tracking-widest">
               {t('contact.send_title')}
             </h2>
             
@@ -215,34 +215,50 @@ export default function ContactPage() {
           </div>
 
           {/* Right Column: Contact Info */}
-          <div className="md:pl-16 md:border-l border-gray-100 flex flex-col pt-2 md:pt-0">
-            <h2 className="text-xl md:text-2xl font-black text-gray-900 mb-10 uppercase tracking-widest">
+          <div className="md:pl-12 lg:pl-16 md:border-l md:border-gray-100 flex flex-col bg-gray-50 md:bg-transparent p-8 md:p-0 rounded-3xl md:rounded-none shadow-[0_4px_20px_rgb(0,0,0,0.04)] md:shadow-none border border-gray-100 md:border-none order-first md:order-last">
+            
+            <h2 className="text-xl md:text-2xl font-black text-gray-900 mb-8 md:mb-10 uppercase tracking-widest relative z-10">
               {t('contact.call_title')}
             </h2>
             
-            <div className="space-y-6 text-sm text-gray-600">
+            <div className="space-y-6 text-sm text-gray-600 relative z-10">
               <div>
                 <h4 className="text-gray-900 font-bold mb-1 text-[13px]">{t('contact.phone')}</h4>
-                <p className="text-[13px]">+509 3703 0010</p>
-                <p className="text-[13px]">+509 3703 0011</p>
-                <p className="text-[13px]">+509 3834 7343</p>
+                <p className="text-[13px] font-medium">+509 3703 0010</p>
+                <p className="text-[13px] font-medium">+509 3703 0011</p>
+                <p className="text-[13px] font-medium">+509 3834 7343</p>
               </div>
               
               <div>
                 <h4 className="text-gray-900 font-bold mb-1 text-[13px]">{t('contact.email')}</h4>
-                <a href="mailto:info@welj-ht.com" className="text-[13px] hover:text-[#e12229] transition-colors">info@welj-ht.com</a>
+                <a href="mailto:info@welj-ht.com" className="text-[13px] font-medium hover:text-[#e12229] transition-colors">info@welj-ht.com</a>
               </div>
               
-              <div>
-                <h4 className="text-gray-900 font-bold mb-1 text-[13px]">{t('contact.address')}</h4>
-                <p className="leading-relaxed text-[13px]">
-                  #7, Delmas 95 & Tabarre 36<br />
-                  Port-au-Prince, Haïti
-                </p>
-                <p className="mt-2 leading-relaxed text-[13px]">
-                  Rue 19 D<br />
-                  Cap-Haïtien, Haïti
-                </p>
+              <div className="space-y-4">
+                <h4 className="text-gray-900 font-bold mb-2 text-[13px]">{t('contact.address')}</h4>
+                
+                <div className="space-y-3">
+                  <div>
+                    <strong className="text-gray-900 block font-semibold text-xs">Port-au-Prince</strong>
+                    <span className="text-gray-600 text-[13px] font-medium">#7, Delmas 95 & Tabarre 36</span>
+                  </div>
+                  <div>
+                    <strong className="text-gray-900 block font-semibold text-xs">Cap-Haïtien</strong>
+                    <span className="text-gray-600 text-[13px] font-medium">Rue 19 D, Cap-Haïtien</span>
+                  </div>
+                  <div>
+                    <strong className="text-gray-900 block font-semibold text-xs">Ouanaminthe</strong>
+                    <span className="text-gray-600 text-[13px] font-medium">42, Rue Vallières, Ouanaminthe</span>
+                  </div>
+                  <div>
+                    <strong className="text-gray-900 block font-semibold text-xs">Les Cayes</strong>
+                    <span className="text-gray-600 text-[13px] font-medium">Bourjolly #7, Route Nationale</span>
+                  </div>
+                  <div>
+                    <strong className="text-gray-900 block font-semibold text-xs">Floride, USA (No Tax)</strong>
+                    <span className="text-gray-600 text-[13px] font-medium">Entrepôt d'expédition internationale</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

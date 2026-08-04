@@ -59,9 +59,9 @@ export default function ShippingItemsPage() {
       
       {/* Top Section - Title and Image */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 mb-12 text-center flex-shrink-0">
-        <div className="flex items-center justify-center gap-4 md:gap-8 max-w-5xl mx-auto mb-3">
+        <div className="flex items-center justify-center gap-4 md:gap-8 max-w-4xl mx-auto mb-4">
           <div className="h-[2px] bg-gradient-to-r from-transparent to-[#022f4b] flex-grow rounded-full"></div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#022f4b] tracking-tight uppercase whitespace-nowrap">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-[#022f4b] tracking-tight whitespace-nowrap">
             {t('shipping.title')}
           </h1>
           <div className="h-[2px] bg-gradient-to-l from-transparent to-[#022f4b] flex-grow rounded-full"></div>

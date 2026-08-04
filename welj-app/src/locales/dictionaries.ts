@@ -139,7 +139,7 @@ export const dictionaries = {
       detail4_text: "Une erreur dans l'adresse peut causer un retard de livraison. Prenez toujours le temps de vérifier l'adresse pour éviter tout contretemps."
     },
     contact: {
-      send_title: "Nous envoyer un message",
+      send_title: "Veuillez nous ecrire ici ",
       success_title: "Message envoyé !",
       success_desc: "Nous avons bien reçu votre message. Notre équipe y répondra dans les plus brefs délais.",
       close_btn: "Fermer",

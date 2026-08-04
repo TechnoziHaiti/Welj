@@ -49,7 +49,7 @@ const slides = [
     subtitle: "",
     showText: false,
     buttonType: "download",
-    bgStyle: "bg-[size:contain] bg-[position:center_70px] md:bg-cover md:bg-[position:left_50px] lg:bg-[position:15%_top]"
+    bgStyle: "bg-cover bg-[position:15%_top] md:bg-[position:left_50px] lg:bg-[position:15%_top]"
   },
   {
     id: 3,
@@ -58,7 +58,7 @@ const slides = [
     subtitle: "",
     showText: false,
     buttonType: "register",
-    bgStyle: "bg-[size:contain] bg-[position:center_70px] md:bg-cover md:bg-[position:right_50px] lg:bg-[position:right_top]"
+    bgStyle: "bg-cover bg-[position:85%_top] md:bg-[position:right_50px] lg:bg-[position:right_top]"
   }
 ];
 
@@ -393,7 +393,7 @@ export default function Home() {
             </div>
 
             {/* Right: Warehouses List in Black Font */}
-            <div className="lg:col-span-5 flex flex-col justify-center space-y-3">
+            <div className="lg:col-span-5 flex flex-col justify-center space-y-4 items-center text-center lg:items-start lg:text-left">
               <h3 className="text-lg font-bold text-gray-900 mb-2">{t('home.branches_haiti')}</h3>
               
               {mapBranches.map((branch, idx) => (
@@ -405,16 +405,16 @@ export default function Home() {
                   }`}
                 >
                   <MapPin 
-                    size={16} 
+                    size={20} 
                     className={`mt-1 flex-shrink-0 transition-colors duration-300 ${
                       idx === activeMapIndex ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'
                     }`}
                   />
-                  <div>
+                  <div className="flex flex-col items-center lg:items-start">
                     <h4 className={`text-sm ${idx === activeMapIndex ? 'font-extrabold text-gray-900' : 'font-bold text-gray-800'}`}>
                       {branch.name}
                     </h4>
-                    <p className="text-xs text-gray-600 font-medium">{branch.address}</p>
+                    <p className="text-xs text-gray-600 font-medium leading-relaxed">{branch.address}</p>
                   </div>
                 </div>
               ))}
@@ -604,7 +604,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-5 flex flex-col justify-center space-y-3">
+                <div className="lg:col-span-5 flex flex-col justify-center space-y-4 items-center text-center lg:items-start lg:text-left">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Nos Agences aux États-Unis :</h3>
                   
                   {usaBranches.map((branch, idx) => (
@@ -616,16 +616,16 @@ export default function Home() {
                       }`}
                     >
                       <MapPin 
-                        size={16} 
+                        size={20} 
                         className={`mt-1 flex-shrink-0 transition-colors duration-300 ${
                           idx === activeUSAMapIndex ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'
                         }`}
                       />
-                      <div>
+                      <div className="flex flex-col items-center lg:items-start">
                         <h4 className={`text-sm ${idx === activeUSAMapIndex ? 'font-extrabold text-gray-900' : 'font-bold text-gray-800'}`}>
                           {branch.name}
                         </h4>
-                        <p className="text-xs text-gray-600 font-medium">{branch.address}</p>
+                        <p className="text-xs text-gray-600 font-medium leading-relaxed">{branch.address}</p>
                       </div>
                     </div>
                   ))}
@@ -707,7 +707,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-5 flex flex-col justify-center space-y-3">
+                <div className="lg:col-span-5 flex flex-col justify-center space-y-4 items-center text-center lg:items-start lg:text-left">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Nos Agences en République Dominicaine :</h3>
                   
                   {rdBranches.map((branch, idx) => (
@@ -719,16 +719,16 @@ export default function Home() {
                       }`}
                     >
                       <MapPin 
-                        size={16} 
+                        size={20} 
                         className={`mt-1 flex-shrink-0 transition-colors duration-300 ${
                           idx === activeRDMapIndex ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'
                         }`}
                       />
-                      <div>
+                      <div className="flex flex-col items-center lg:items-start">
                         <h4 className={`text-sm ${idx === activeRDMapIndex ? 'font-extrabold text-gray-900' : 'font-bold text-gray-800'}`}>
                           {branch.name}
                         </h4>
-                        <p className="text-xs text-gray-600 font-medium">{branch.address}</p>
+                        <p className="text-xs text-gray-600 font-medium leading-relaxed">{branch.address}</p>
                       </div>
                     </div>
                   ))}
@@ -756,16 +756,18 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="max-w-[960px] mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-2 sm:gap-x-4 gap-y-6 sm:gap-y-8 justify-items-center items-center py-8">
+          <div className="max-w-[1000px] mx-auto">
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-6 justify-items-center items-center py-10 px-2">
               {partners.map((partner, i) => (
               <a 
                 key={i}
                 href={partner.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative flex items-center justify-center w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] bg-white rounded-[20px] border border-black/[0.03] shadow-[0_4px_20px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.20),0_2px_10px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:border-black/[0.06] transition-all duration-300 ease-out p-4 sm:p-5 ${
-                  i % 2 !== 0 ? 'mt-0 sm:mt-12' : ''
+                className={`group relative flex items-center justify-center w-[105px] h-[105px] sm:w-[130px] sm:h-[130px] lg:w-[140px] lg:h-[140px] bg-white rounded-2xl sm:rounded-[24px] border border-black/[0.04] shadow-[0_8px_24px_rgba(0,0,0,0.15)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.22)] hover:-translate-y-1 hover:border-black/[0.08] transition-all duration-300 ease-out p-3 sm:p-5 ${
+                  i % 3 === 1 ? 'mt-8 md:mt-0' : ''
+                } ${
+                  i % 2 !== 0 ? 'md:mt-12' : ''
                 }`}
               >
                 <div className="relative w-full h-full flex items-center justify-center">

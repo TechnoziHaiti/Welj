@@ -104,7 +104,7 @@ export default function AboutPage() {
             
             {/* Section 1 */}
             <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-16">
-              <div className="w-full lg:w-1/3 rounded-3xl overflow-hidden shadow-2xl shadow-gray-400/60 border border-gray-100 transform -rotate-2">
+              <div className="w-[75%] max-w-[280px] md:max-w-[400px] lg:max-w-none lg:w-1/3 mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-gray-400/60 border border-gray-100 transform -rotate-2">
                 <Image 
                   src="/imaj WELJ 1.jpeg" 
                   alt="Expertise Welj" 
@@ -136,7 +136,7 @@ export default function AboutPage() {
 
             {/* Section 2 */}
             <div className="flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-16">
-              <div className="w-full lg:w-1/3 rounded-3xl overflow-hidden shadow-2xl shadow-gray-400/60 border border-gray-100 transform rotate-2">
+              <div className="w-[75%] max-w-[280px] md:max-w-[400px] lg:max-w-none lg:w-1/3 mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-gray-400/60 border border-gray-100 transform rotate-2">
                 <Image 
                   src="/imaj WELJ 2.jpeg" 
                   alt="Achetez partout avec Welj" 
@@ -168,7 +168,7 @@ export default function AboutPage() {
 
             {/* Section 3 */}
             <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-16">
-              <div className="w-full lg:w-1/3 rounded-3xl overflow-hidden shadow-2xl shadow-gray-400/60 border border-gray-100 transform -rotate-2">
+              <div className="w-[75%] max-w-[280px] md:max-w-[400px] lg:max-w-none lg:w-1/3 mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-gray-400/60 border border-gray-100 transform -rotate-2">
                 <Image 
                   src="/imaj-welj-3.png" 
                   alt="Transitaire de confiance" 

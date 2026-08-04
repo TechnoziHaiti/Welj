@@ -11,6 +11,8 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobilePricingOpen, setIsMobilePricingOpen] = useState(false);
+  const [isMobileResourcesOpen, setIsMobileResourcesOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const pathname = usePathname();
   const { lang, setLang, t } = useLanguage();
@@ -253,24 +255,62 @@ export default function Navbar() {
             <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 transition-colors ${pathname === '/about' ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}>
               <span>{t('nav.about')}</span>
             </Link>
-            <Link href="/pricing" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 transition-colors ${pathname === '/pricing' ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}>
-              <span>{t('nav.pricing_shipping')}</span>
-            </Link>
-            <Link href="/calculator" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 transition-colors ${pathname === '/calculator' ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}>
-              <span>{t('nav.calculator')}</span>
-            </Link>
-            <Link href="/resources" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 transition-colors ${pathname === '/resources' ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}>
-              <HelpCircle size={20} />
-              <span>{t('nav.tips')}</span>
-            </Link>
-            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 transition-colors ${pathname === '/contact' ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}>
-              <HelpCircle size={20} />
-              <span>{t('nav.contact')}</span>
-            </Link>
-            <Link href="/track" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 transition-colors ${pathname === '/track' ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}>
-              <PackageSearch size={20} />
-              <span>{t('nav.track')}</span>
-            </Link>
+            {/* Mobile Dropdown: Prix et Shipping */}
+            <div className="w-full flex flex-col items-center">
+              <button 
+                onClick={() => setIsMobilePricingOpen(!isMobilePricingOpen)}
+                className={`flex items-center gap-2 transition-colors ${pathname.startsWith('/pricing') ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}
+              >
+                <span>{t('nav.pricing_shipping')}</span>
+                <ChevronDown size={20} className={`transition-transform duration-300 ${isMobilePricingOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {/* Expandable sub-menu */}
+              {isMobilePricingOpen && (
+                <div className="flex flex-col items-start space-y-4 mt-2 w-full pl-[25%] sm:pl-[35%] animate-in slide-in-from-top-1 fade-in duration-200">
+                  <Link href="/procedures" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600 text-left">
+                    {t('nav.procedures')}
+                  </Link>
+                  <Link href="/calculator" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600 text-left">
+                    {t('nav.calculator')}
+                  </Link>
+                  <Link href="/pricing" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600 text-left">
+                    {t('nav.pricing_options')}
+                  </Link>
+                  <Link href="/shipping-items" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600 text-left">
+                    {t('nav.forbidden_items')}
+                  </Link>
+                  <Link href="/track" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-bold text-gray-600 hover:text-red-600 flex items-center gap-2 mt-2 text-left">
+                    <PackageSearch size={16} className="text-red-500" />
+                    <span>{t('nav.track')}</span>
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Dropdown: Ressources et aide */}
+            <div className="w-full flex flex-col items-center">
+              <button 
+                onClick={() => setIsMobileResourcesOpen(!isMobileResourcesOpen)}
+                className={`flex items-center gap-2 transition-colors ${pathname.startsWith('/resources') ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}
+              >
+                <HelpCircle size={20} />
+                <span>{t('nav.resources_help')}</span>
+                <ChevronDown size={20} className={`transition-transform duration-300 ${isMobileResourcesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {/* Expandable sub-menu */}
+              {isMobileResourcesOpen && (
+                <div className="flex flex-col items-start space-y-4 mt-2 w-full pl-[25%] sm:pl-[35%] animate-in slide-in-from-top-1 fade-in duration-200">
+                  <Link href="/resources" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600 text-left">
+                    {t('nav.tips')}
+                  </Link>
+                  <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600 text-left">
+                    {t('nav.contact')}
+                  </Link>
+                </div>
+              )}
+            </div>
 
             {/* Mobile Action Buttons: Se connecter & S'inscrire */}
             <div className="flex flex-col w-full gap-3 pt-4 border-t border-gray-100">
