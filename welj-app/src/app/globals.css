@@ -9,6 +9,34 @@ html, body {
 body {
   background-color: #ffffff;
   color: #171717;
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+img,
+svg,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 90%;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 85%;
+  }
 }
 
 @keyframes float-gentle {
