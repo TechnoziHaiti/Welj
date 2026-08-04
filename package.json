@@ -1,6 +1,10 @@
 {
   "name": "awelj-pixel-match-bootstrap-root",
   "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "welj-app"
+  ],
   "description": "Root configuration to easily run the Next.js app",
   "scripts": {
     "dev": "cd welj-app && npm run dev",
