@@ -216,7 +216,7 @@ export default function Home() {
           <div className="w-full lg:w-[60%] transition-all duration-700 flex flex-col items-center sm:items-start">
             {slides[currentSlide].showText && (
               <>
-                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-md">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-md">
                   {currentSlide === 0 ? t('home.hero_title') : slides[currentSlide].title}
                 </h1>
                 <p className="text-lg lg:text-xl mb-8 leading-relaxed text-white font-light max-w-xl drop-shadow">
@@ -321,7 +321,7 @@ export default function Home() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
             {/* Left: 3D Haiti Flag Map Graphic with Realistic Looping Magnifying Glass */}
             <div className="lg:col-span-7 flex justify-center items-center">
-              <div className="relative w-full max-w-xl h-84 md:h-90 flex items-center justify-center p-2">
+              <div className="relative w-full max-w-xl aspect-[16/10] flex items-center justify-center p-2 mx-auto">
                 <Image 
                   src="/haiti-flag-map.png" 
                   alt="Carte d'Haïti WELJ" 
@@ -373,7 +373,7 @@ export default function Home() {
                   </div>
 
                   {/* Floating active branch card preview */}
-                  <div className="-mt-1 bg-white/95 backdrop-blur-md p-2 rounded-xl shadow-2xl border border-gray-200 flex items-center gap-2.5 w-52 z-40">
+                  <div className="-mt-1 bg-white/95 backdrop-blur-md p-2 rounded-xl shadow-2xl border border-gray-200 flex items-center gap-2.5 w-48 sm:w-52 z-40">
                     <div className="relative w-9 h-9 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100 shadow-xs">
                       <Image 
                         src={mapBranches[activeMapIndex].image} 
@@ -536,7 +536,7 @@ export default function Home() {
             <div className="transition-all duration-500">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
                 <div className="lg:col-span-7 flex justify-center items-center">
-                  <div className="relative w-full max-w-xl h-84 md:h-90 flex items-center justify-center p-2">
+                  <div className="relative w-full max-w-xl aspect-[16/10] flex items-center justify-center p-2 mx-auto">
                     <Image 
                       src="/usa_flag.png" 
                       alt="Carte USA WELJ" 
@@ -585,7 +585,7 @@ export default function Home() {
                         />
                       </div>
 
-                      <div className="-mt-1 bg-white/95 backdrop-blur-md p-2 rounded-xl shadow-2xl border border-gray-200 flex items-center gap-2.5 w-52 z-40">
+                      <div className="-mt-1 bg-white/95 backdrop-blur-md p-2 rounded-xl shadow-2xl border border-gray-200 flex items-center gap-2.5 w-48 sm:w-52 z-40">
                         <div className="relative w-9 h-9 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100 shadow-xs bg-gray-50 flex items-center justify-center">
                           <Image 
                             src={(usaBranches[activeUSAMapIndex] || usaBranches[0])?.image} 
@@ -639,7 +639,7 @@ export default function Home() {
             <div className="transition-all duration-500">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
                 <div className="lg:col-span-7 flex justify-center items-center">
-                  <div className="relative w-full max-w-xl h-84 md:h-90 flex items-center justify-center p-2">
+                  <div className="relative w-full max-w-xl aspect-[16/10] flex items-center justify-center p-2 mx-auto">
                     <Image 
                       src="/rep_dom.png" 
                       alt="Carte RD WELJ" 
@@ -688,7 +688,7 @@ export default function Home() {
                         />
                       </div>
 
-                      <div className="-mt-1 bg-white/95 backdrop-blur-md p-2 rounded-xl shadow-2xl border border-gray-200 flex items-center gap-2.5 w-52 z-40">
+                      <div className="-mt-1 bg-white/95 backdrop-blur-md p-2 rounded-xl shadow-2xl border border-gray-200 flex items-center gap-2.5 w-48 sm:w-52 z-40">
                         <div className="relative w-9 h-9 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100 shadow-xs bg-gray-50 flex items-center justify-center">
                           <Image 
                             src={rdBranches[activeRDMapIndex].image} 

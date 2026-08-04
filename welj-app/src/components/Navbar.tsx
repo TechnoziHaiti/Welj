@@ -220,8 +220,8 @@ export default function Navbar() {
 
       {/* Mobile Full-Screen Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-xl flex flex-col items-center justify-center p-6">
-          <div className="absolute top-6 right-6 flex items-center gap-3">
+        <div className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-3">
             {/* Mobile Lang Button */}
             <button 
               onClick={() => {

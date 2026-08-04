@@ -50,8 +50,8 @@ export const dictionaries = {
       s3_b3: "Livraison express <strong>en quelques jours ouvrables seulement</strong>."
     },
     pricing: {
-      title: "Prix et Shipping",
-      dev_msg: "Cette page est actuellement en cours de développement. Revenez bientôt !"
+      title: "Building...",
+      dev_msg: "Revenez bientôt !"
     },
     calc: {
       title: "Obtenir les Tarifs",
@@ -157,8 +157,31 @@ export const dictionaries = {
       address: "Adresse"
     },
     track: {
-      title: "Suivre l'expédition",
-      dev: "Cette page est actuellement en cours de développement. Revenez bientôt !"
+      title: "Suivi des expéditions",
+      subtitle: "Sélectionnez votre type d'expédition et saisissez votre numéro de suivi pour afficher tous les détails.",
+      placeholder: "Numéro de suivi (ex: WELJ12345678)",
+      track_btn: "Lancer",
+      type_sea: "Maritime",
+      type_air: "Aérien",
+      type_lcl: "Groupage (LCL)",
+      type_parcel: "Colis",
+      format_help: "Le numéro d'expédition comporte 9 à 12 caractères et se trouve sur votre reçu.",
+      faq1_title: "Qu'est-ce qu'un numéro d'expédition ?",
+      faq1_desc: "Un numéro d'expédition est un identifiant unique imprimé sur vos formulaires de réservation. Il vous permet de suivre votre colis à chaque étape.",
+      faq2_title: "Quelles informations obtiendrez-vous ?",
+      faq2_desc: "Outre les informations sur la localisation actuelle, vous pourrez voir : le type de colis, la date estimée d'arrivée, et toutes les étapes du voyage.",
+      support_title: "Besoin d'aide avec votre suivi ?",
+      support_desc: "Obtenez des réponses et des mises à jour concernant vos expéditions directement auprès de notre service client.",
+      support_btn: "Assistance WhatsApp",
+      status_received: "Reçu (USA)",
+      status_received_desc: "Le colis a été reçu à notre entrepôt aux États-Unis.",
+      status_transit: "En transit",
+      status_transit_desc: "Le colis est en route vers la destination.",
+      status_available: "Disponible",
+      status_available_desc: "Le colis est arrivé en Haïti et est prêt à être récupéré.",
+      status_delivered: "Livré",
+      status_delivered_desc: "Le colis a été récupéré par le destinataire.",
+      demo_notice: "Résultat de suivi simulé"
     },
     chatbot: {
       title: "Assistant WELJ",
@@ -356,8 +379,31 @@ export const dictionaries = {
       address: "Address"
     },
     track: {
-      title: "Track shipment",
-      dev: "This page is currently under development. Come back soon!"
+      title: "Shipment Tracking",
+      subtitle: "Select your shipment type and enter your tracking number to view all details.",
+      placeholder: "Tracking number (e.g., WELJ12345678)",
+      track_btn: "Track",
+      type_sea: "Ocean Freight",
+      type_air: "Air Freight",
+      type_lcl: "Groupage (LCL)",
+      type_parcel: "Parcel",
+      format_help: "The tracking number contains 9 to 12 characters and can be found on your receipt.",
+      faq1_title: "What is a tracking number?",
+      faq1_desc: "A tracking number is a unique identifier printed on your booking forms. It allows you to track your package at every step.",
+      faq2_title: "What information will you get?",
+      faq2_desc: "In addition to current location information, you will be able to see: package type, estimated arrival date, and all journey milestones.",
+      support_title: "Need help tracking?",
+      support_desc: "Get answers and updates regarding your shipments directly from our customer service.",
+      support_btn: "WhatsApp Support",
+      status_received: "Received (USA)",
+      status_received_desc: "Package has been received at our US warehouse.",
+      status_transit: "In Transit",
+      status_transit_desc: "Package is on its way to the destination.",
+      status_available: "Available",
+      status_available_desc: "Package has arrived in Haiti and is ready for pickup.",
+      status_delivered: "Delivered",
+      status_delivered_desc: "Package has been picked up by the recipient.",
+      demo_notice: "Simulated tracking result"
     },
     chatbot: {
       title: "WELJ Assistant",
@@ -555,8 +601,31 @@ export const dictionaries = {
       address: "Adrès"
     },
     track: {
-      title: "Swiv anbakman",
-      dev: "Paj sa a poko pare, n ap travay sou li toujou. Tounen gade pita !"
+      title: "Swiv anbakman w lan",
+      subtitle: "Chwazi ki kalite anbakman li ye epi antre nimewo swivi a pou w wè tout detay yo.",
+      placeholder: "Nimewo swivi (egzanp: WELJ12345678)",
+      track_btn: "Swiv",
+      type_sea: "Nan Bato",
+      type_air: "Nan Avyon",
+      type_lcl: "Gwoupaj (LCL)",
+      type_parcel: "Pake nòmal",
+      format_help: "Nimewo swivi a gen 9 rive 12 lèt ak chif, w ap jwenn li sou resi w la.",
+      faq1_title: "Kisa yon nimewo swivi ye ?",
+      faq1_desc: "Yon nimewo swivi se yon kòd inik ki ekri sou papye kòmand ou a. Li pèmèt ou konnen kote pake w la ye nan chak etap.",
+      faq2_title: "Ki enfòmasyon w ap jwenn ?",
+      faq2_desc: "Apa de kote pake a ye kounye a, w ap ka wè : ki kalite pake li ye, ki lè yo prevwa l ap rive, ak tout wout li fè.",
+      support_title: "Ou bezwen èd pou w swiv pake w la ?",
+      support_desc: "Jwenn repons ak enfòmasyon sou pake w yo dirèkteman nan men sèvis kliyan nou an.",
+      support_btn: "Sipò sou WhatsApp",
+      status_received: "Resevwa (USA)",
+      status_received_desc: "Nou resevwa pake w la nan depo nou Ozetazini.",
+      status_transit: "Nan wout",
+      status_transit_desc: "Pake a nan wout pou l ale kote l prale a.",
+      status_available: "Disponib (Ayiti)",
+      status_available_desc: "Pake a rive Ayiti epi li pare pou w vin chèche l.",
+      status_delivered: "Livre",
+      status_delivered_desc: "Moun nan gentan pase pran pake a.",
+      demo_notice: "Rezilta swivi (Egzanp)"
     },
     chatbot: {
       title: "Asistan WELJ",
