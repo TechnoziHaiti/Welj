@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { Home, Users, BadgePercent, HelpCircle, PackageSearch, Menu, X, Globe, ChevronDown, UserPlus, LogIn, Check } from 'lucide-react';
+import { Home, Users, BadgePercent, HelpCircle, PackageSearch, Menu, X, Globe, ChevronDown, ChevronRight, Plus, Minus, UserPlus, LogIn, Check } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Navbar() {
@@ -47,13 +47,13 @@ export default function Navbar() {
     }
   }, [lastScrollY]);
 
-  // Link Style (underline only for active section)
+  // Link Style (active = red text only, no underline)
   const getNavLinkClass = (path: string) => {
     const isActive = pathname === path;
-    return `font-medium text-sm transition-colors py-2 px-1 flex items-center gap-1.5 border-b-2 ${
+    return `font-medium text-sm transition-colors py-2 px-1 flex items-center gap-1.5 ${
       isActive 
-        ? 'text-red-600 font-semibold border-red-600' 
-        : 'text-gray-700 hover:text-red-600 border-transparent'
+        ? 'text-red-600 font-semibold' 
+        : 'text-gray-700 hover:text-red-600'
     }`;
   };
 
@@ -209,12 +209,13 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center">
-             <button 
-               onClick={() => setIsMobileMenuOpen(true)}
-               className="w-12 h-12 rounded-full bg-gradient-to-b from-white to-gray-100 flex items-center justify-center font-bold text-[11px] tracking-wider text-[#021f3a] border border-gray-200 shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_2px_5px_rgba(255,255,255,0.9)] active:shadow-[inset_0_4px_8px_rgba(0,0,0,0.15)] active:translate-y-0.5 transition-all duration-200"
-             >
-               {t('nav.menu')}
-             </button>
+            <button 
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="w-14 h-14 rounded-full bg-gradient-to-b from-white to-gray-100 flex items-center justify-center text-[#021f3a] border border-gray-200 shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_2px_5px_rgba(255,255,255,0.9)] active:shadow-[inset_0_4px_8px_rgba(0,0,0,0.15)] active:translate-y-0.5 transition-all duration-200"
+              aria-label="Ouvrir le menu"
+            >
+              <Menu size={24} />
+            </button>
           </div>
         </div>
       </div>
@@ -222,125 +223,155 @@ export default function Navbar() {
 
       {/* Mobile Full-Screen Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-6 overflow-y-auto">
-          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-3">
-            {/* Mobile Lang Button */}
+        <div className="fixed inset-0 z-[100] bg-white flex flex-col overflow-hidden">
+          {/* Header */}
+          <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-gray-100/80">
             <button 
               onClick={() => {
                 const nextIndex = (languages.findIndex(l => l.code === lang) + 1) % languages.length;
                 setLang(languages[nextIndex].code);
               }}
-              className="flex items-center gap-2 text-xs font-bold text-gray-800 px-3.5 py-2 rounded-full border border-gray-200 bg-white shadow-sm"
+              className="flex items-center gap-2 text-xs font-semibold text-gray-700 px-3.5 py-2 rounded-full border border-gray-200 bg-white shadow-sm"
             >
               <div className="relative w-5 h-3.5 rounded-xs overflow-hidden border border-gray-200 shadow-xs flex-shrink-0">
                 <Image src={currentLangObj.flagImg} alt={currentLangObj.label} fill sizes="24px" className="object-cover" />
               </div>
-              <span className="font-bold text-[11px] text-gray-500 uppercase">{currentLangObj.code}</span>
+              <span className="font-bold text-[11px] text-gray-400 uppercase">{currentLangObj.code}</span>
               <span>{currentLangObj.label}</span>
             </button>
 
             <button 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-red-600 transition-colors"
+              className="w-14 h-14 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center transition-all duration-200 hover:shadow-md"
               aria-label="Fermer le menu"
             >
-              <X size={22} strokeWidth={1.5} />
+              <span className="text-red-600 font-bold text-[10px] tracking-wider uppercase">Close</span>
             </button>
           </div>
-          
-          <div className="flex flex-col items-center space-y-6 text-lg font-semibold w-full max-w-sm">
-            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 transition-colors ${pathname === '/' ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}>
-              <span>{t('nav.home')}</span>
-            </Link>
-            <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 transition-colors ${pathname === '/about' ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}>
-              <span>{t('nav.about')}</span>
-            </Link>
-            {/* Mobile Dropdown: Prix et Shipping */}
-            <div className="w-full flex flex-col items-center">
-              <button 
-                onClick={() => {
-                  setIsMobilePricingOpen(!isMobilePricingOpen);
-                  if (!isMobilePricingOpen) setIsMobileResourcesOpen(false);
-                }}
-                className={`flex items-center gap-2 transition-colors ${pathname.startsWith('/pricing') ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}
-              >
-                <span>{t('nav.pricing_shipping')}</span>
-                <ChevronDown size={20} className={`transition-transform duration-300 ${isMobilePricingOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              {/* Expandable sub-menu */}
-              {isMobilePricingOpen && (
-                <div className="flex flex-col items-center space-y-4 mt-3 w-full animate-in slide-in-from-top-1 fade-in duration-200">
-                  <Link href="/procedures" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
-                    {t('nav.procedures')}
-                  </Link>
-                  <Link href="/calculator" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
-                    {t('nav.calculator')}
-                  </Link>
-                  <Link href="/pricing" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
-                    {t('nav.pricing_options')}
-                  </Link>
-                  <Link href="/shipping-items" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
-                    {t('nav.forbidden_items')}
-                  </Link>
-                  <Link href="/track" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-bold text-gray-600 hover:text-red-600 flex items-center justify-center gap-2 mt-1">
-                    <PackageSearch size={16} className="text-red-500" />
-                    <span>{t('nav.track')}</span>
-                  </Link>
-                </div>
-              )}
-            </div>
 
-            {/* Mobile Dropdown: Ressources et aide */}
-            <div className="w-full flex flex-col items-center">
-              <button 
-                onClick={() => {
-                  setIsMobileResourcesOpen(!isMobileResourcesOpen);
-                  if (!isMobileResourcesOpen) setIsMobilePricingOpen(false);
-                }}
-                className={`flex items-center gap-2 transition-colors ${pathname.startsWith('/resources') ? 'text-red-600' : 'text-[#334155] hover:text-red-600'}`}
+          {/* Scrollable Navigation */}
+          <div className="flex-1 overflow-y-auto px-4 py-5">
+            <nav className="flex flex-col gap-1">
+              {/* Accueil */}
+              <Link 
+                href="/" 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className="group flex items-center justify-between min-h-[52px] px-5 rounded-2xl transition-all duration-200 text-[#1a2b4a] hover:bg-[#F7F8FA] hover:translate-x-1"
               >
-                <HelpCircle size={20} />
-                <span>{t('nav.resources_help')}</span>
-                <ChevronDown size={20} className={`transition-transform duration-300 ${isMobileResourcesOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              {/* Expandable sub-menu */}
-              {isMobileResourcesOpen && (
-                <div className="flex flex-col items-center space-y-4 mt-3 w-full animate-in slide-in-from-top-1 fade-in duration-200">
-                  <Link href="/resources" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
-                    {t('nav.tips')}
-                  </Link>
-                  <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-gray-500 hover:text-red-600">
-                    {t('nav.contact')}
-                  </Link>
-                </div>
-              )}
-            </div>
+                <span className="font-semibold text-[15px]">{t('nav.home')}</span>
+                <ChevronRight size={16} className="text-gray-300 group-hover:text-gray-500 transition-colors" />
+              </Link>
 
-            {/* Mobile Action Buttons: Se connecter & S'inscrire */}
-            <div className="flex flex-col w-full gap-3 pt-4 border-t border-gray-100">
-              <a 
-                href="https://www.welj-ht.com/user/login" 
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 border border-gray-300 text-[#022f4b] font-bold py-3 rounded-full hover:bg-gray-50 transition-all text-sm"
+              {/* Qui sommes nous */}
+              <Link 
+                href="/about" 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className="group flex items-center justify-between min-h-[52px] px-5 rounded-2xl transition-all duration-200 text-[#1a2b4a] hover:bg-[#F7F8FA] hover:translate-x-1"
               >
-                <LogIn size={18} />
-                <span>{t('nav.login')}</span>
-              </a>
-              <a 
-                href="https://www.welj-ht.com/user/signup" 
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 bg-red-600 text-white font-bold py-3 rounded-full hover:bg-red-700 shadow-md transition-all text-sm"
+                <span className="font-semibold text-[15px]">{t('nav.about')}</span>
+                <ChevronRight size={16} className="text-gray-300 group-hover:text-gray-500 transition-colors" />
+              </Link>
+
+              {/* Separator */}
+              <div className="h-px bg-gray-100 my-3 mx-3" />
+
+              {/* Prix & Shipping - Expandable */}
+              <div>
+                <button 
+                  onClick={() => {
+                    setIsMobilePricingOpen(!isMobilePricingOpen);
+                    if (!isMobilePricingOpen) setIsMobileResourcesOpen(false);
+                  }}
+                  className="group w-full flex items-center justify-between min-h-[52px] px-5 rounded-2xl transition-all duration-200 text-[#1a2b4a] hover:bg-[#F7F8FA] hover:translate-x-1"
+                >
+                  <span className="font-semibold text-[15px]">{t('nav.pricing_shipping')}</span>
+                  {isMobilePricingOpen 
+                    ? <Minus size={18} className="text-gray-500 transition-all duration-300" />
+                    : <Plus size={18} className="text-gray-600 group-hover:text-gray-800 transition-all duration-300" />
+                  }
+                </button>
+                
+                {/* Expandable sub-menu */}
+                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobilePricingOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <div className="pl-5 py-1.5 flex flex-col gap-0.5">
+                    <Link href="/procedures" onClick={() => setIsMobileMenuOpen(false)} className="group flex items-center justify-between min-h-[46px] px-4 rounded-xl text-gray-500 hover:bg-[#F7F8FA] hover:text-[#1a2b4a] hover:translate-x-1 transition-all duration-200">
+                      <span className="text-[14px] font-medium">{t('nav.procedures')}</span>
+                      <ChevronRight size={14} className="text-gray-200 group-hover:text-gray-400 transition-colors" />
+                    </Link>
+                    <Link href="/calculator" onClick={() => setIsMobileMenuOpen(false)} className="group flex items-center justify-between min-h-[46px] px-4 rounded-xl text-gray-500 hover:bg-[#F7F8FA] hover:text-[#1a2b4a] hover:translate-x-1 transition-all duration-200">
+                      <span className="text-[14px] font-medium">{t('nav.calculator')}</span>
+                      <ChevronRight size={14} className="text-gray-200 group-hover:text-gray-400 transition-colors" />
+                    </Link>
+                    <Link href="/pricing" onClick={() => setIsMobileMenuOpen(false)} className="group flex items-center justify-between min-h-[46px] px-4 rounded-xl text-gray-500 hover:bg-[#F7F8FA] hover:text-[#1a2b4a] hover:translate-x-1 transition-all duration-200">
+                      <span className="text-[14px] font-medium">{t('nav.pricing_options')}</span>
+                      <ChevronRight size={14} className="text-gray-200 group-hover:text-gray-400 transition-colors" />
+                    </Link>
+                    <Link href="/shipping-items" onClick={() => setIsMobileMenuOpen(false)} className="group flex items-center justify-between min-h-[46px] px-4 rounded-xl text-gray-500 hover:bg-[#F7F8FA] hover:text-[#1a2b4a] hover:translate-x-1 transition-all duration-200">
+                      <span className="text-[14px] font-medium">{t('nav.forbidden_items')}</span>
+                      <ChevronRight size={14} className="text-gray-200 group-hover:text-gray-400 transition-colors" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Suivre l'expédition - Top level */}
+              <Link 
+                href="/track" 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className="group flex items-center justify-between min-h-[52px] px-5 rounded-2xl transition-all duration-200 text-[#1a2b4a] hover:bg-[#F7F8FA] hover:translate-x-1"
               >
-                <UserPlus size={18} />
-                <span>{t('nav.signup')}</span>
-              </a>
-            </div>
+                <span className="font-semibold text-[15px]">{t('nav.track')}</span>
+                <ChevronRight size={16} className="text-gray-300 group-hover:text-gray-500 transition-colors" />
+              </Link>
+
+              {/* Separator */}
+              <div className="h-px bg-gray-100 my-3 mx-3" />
+
+              {/* Ressources & aide - Expandable */}
+              <div>
+                <button 
+                  onClick={() => {
+                    setIsMobileResourcesOpen(!isMobileResourcesOpen);
+                    if (!isMobileResourcesOpen) setIsMobilePricingOpen(false);
+                  }}
+                  className="group w-full flex items-center justify-between min-h-[52px] px-5 rounded-2xl transition-all duration-200 text-[#1a2b4a] hover:bg-[#F7F8FA] hover:translate-x-1"
+                >
+                  <span className="font-semibold text-[15px]">{t('nav.resources_help')}</span>
+                  {isMobileResourcesOpen 
+                    ? <Minus size={18} className="text-gray-500 transition-all duration-300" />
+                    : <Plus size={18} className="text-gray-600 group-hover:text-gray-800 transition-all duration-300" />
+                  }
+                </button>
+                
+                {/* Expandable sub-menu */}
+                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobileResourcesOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <div className="pl-5 py-1.5 flex flex-col gap-0.5">
+                    <Link href="/resources" onClick={() => setIsMobileMenuOpen(false)} className="group flex items-center justify-between min-h-[46px] px-4 rounded-xl text-gray-500 hover:bg-[#F7F8FA] hover:text-[#1a2b4a] hover:translate-x-1 transition-all duration-200">
+                      <span className="text-[14px] font-medium">{t('nav.tips')}</span>
+                      <ChevronRight size={14} className="text-gray-200 group-hover:text-gray-400 transition-colors" />
+                    </Link>
+                    <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="group flex items-center justify-between min-h-[46px] px-4 rounded-xl text-gray-500 hover:bg-[#F7F8FA] hover:text-[#1a2b4a] hover:translate-x-1 transition-all duration-200">
+                      <span className="text-[14px] font-medium">{t('nav.contact')}</span>
+                      <ChevronRight size={14} className="text-gray-200 group-hover:text-gray-400 transition-colors" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          {/* Fixed Bottom: S'inscrire uniquement */}
+          <div className="px-5 py-4 border-t border-gray-100 bg-white">
+            <a 
+              href="https://www.welj-ht.com/user/signup" 
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 rounded-2xl shadow-md transition-all duration-200 text-[14px]"
+            >
+              <UserPlus size={16} />
+              <span>{t('nav.signup')}</span>
+            </a>
           </div>
         </div>
       )}

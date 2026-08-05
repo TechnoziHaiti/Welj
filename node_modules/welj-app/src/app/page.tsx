@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Plane, Ship, Package, MapPin, Truck, Globe2, UserPlus, ChevronLeft, ChevronRight, Download } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 
 const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.welj.welj_flutter_user&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRleATXAqhwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABp1df_MA9aDfcaCYKVcQO5Z4aBXdhCLby1EC93clafyeJwZqGWJYIEsZTeKxh_aem_UJdkg5m8JttTIdKAitbJkw&pli=1';
@@ -368,10 +369,10 @@ export default function Home() {
                       aria-label={branch.name}
                     >
                       <span 
-                        className={`w-3.5 h-3.5 rounded-full border-2 border-white shadow-md transition-all duration-500 ${
+                        className={`w-3.5 h-3.5 rounded-full border-2 shadow-md transition-all duration-500 ${
                           isActive 
-                            ? `${branch.badgeColor} scale-125 ring-4 ring-white/60` 
-                            : 'bg-white border-gray-300 hover:scale-110'
+                            ? 'bg-blue-500 border-white scale-125 ring-4 ring-blue-200/60' 
+                            : 'bg-transparent border-transparent'
                         }`}
                       ></span>
                     </button>
@@ -447,111 +448,41 @@ export default function Home() {
           </div>
 
           {/* Bottom Part: 5 Location Cards with user provided images */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {/* Card 1: Port-au-Prince */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
-              <div className="text-center py-3.5 bg-gray-50 border-b border-gray-100">
-                <h3 className="text-lg font-bold text-[#022f4b]">Port-au-Prince</h3>
-              </div>
-              <div className="relative w-full aspect-video overflow-hidden bg-gray-100">
-                <Image 
-                  src="/port-au-prince.jpg" 
-                  alt="Agence Port-au-Prince WELJ" 
-                  fill
-                  sizes="(max-width: 768px) 100vw, 380px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-4 flex flex-col flex-grow justify-between text-center bg-white">
-                <p className="text-xs text-gray-600 font-medium">
-                  #7, Delmas 95, Route de Jacquet, Complexe Sitwonèl, 36 Tabarre 36, Port-au-Prince, et aussi à Technozi Haiti, Route Frère.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 2: Cap-Haïtien */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
-              <div className="text-center py-3.5 bg-gray-50 border-b border-gray-100">
-                <h3 className="text-lg font-bold text-[#022f4b]">Cap-Haïtien</h3>
-              </div>
-              <div className="relative w-full aspect-video overflow-hidden bg-gray-100">
-                <Image 
-                  src="/cap-haitien.jpg" 
-                  alt="Agence Cap-Haïtien WELJ" 
-                  fill
-                  sizes="(max-width: 768px) 100vw, 380px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-4 flex flex-col flex-grow justify-between text-center bg-white">
-                <p className="text-xs text-gray-600 font-medium">
-                  Rue 19 D, Cap-Haïtien.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 3: Ouanaminthe */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
-              <div className="text-center py-3.5 bg-gray-50 border-b border-gray-100">
-                <h3 className="text-lg font-bold text-[#022f4b]">Ouanaminthe</h3>
-              </div>
-              <div className="relative w-full aspect-video overflow-hidden bg-gray-100">
-                <Image 
-                  src="/ouanaminthe.jpg" 
-                  alt="Agence Ouanaminthe WELJ" 
-                  fill
-                  sizes="(max-width: 768px) 100vw, 380px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-4 flex flex-col flex-grow justify-between text-center bg-white">
-                <p className="text-xs text-gray-600 font-medium">
-                  42, Rue vallières, Ouanaminthe.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 4: Les Cayes */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
-              <div className="text-center py-3.5 bg-gray-50 border-b border-gray-100">
-                <h3 className="text-lg font-bold text-[#022f4b]">Les Cayes</h3>
-              </div>
-              <div className="relative w-full aspect-video overflow-hidden bg-gray-100">
-                <Image 
-                  src="/cayes.jpg" 
-                  alt="Agence Les Cayes WELJ" 
-                  fill
-                  sizes="(max-width: 768px) 100vw, 380px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-4 flex flex-col flex-grow justify-between text-center bg-white">
-                <p className="text-xs text-gray-600 font-medium">
-                  Bourjolly #7, Route Nationale.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 5: Jérémie */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
-              <div className="text-center py-3.5 bg-gray-50 border-b border-gray-100">
-                <h3 className="text-lg font-bold text-[#022f4b]">Jérémie</h3>
-              </div>
-              <div className="relative w-full aspect-video overflow-hidden bg-gray-100">
-                <Image 
-                  src="/jeremie.png" 
-                  alt="Agence Jérémie WELJ" 
-                  fill
-                  sizes="(max-width: 768px) 100vw, 380px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-4 flex flex-col flex-grow justify-between text-center bg-white">
-                <p className="text-xs text-gray-600 font-medium">
-                  #4, Source Dommage, Rue Jérémie.
-                </p>
-              </div>
-            </div>
+          <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
+            {[
+              { name: 'Port-au-Prince', image: '/port-au-prince.jpg', text: '#7, Delmas 95, Route de Jacquet, Complexe Sitwonèl, 36 Tabarre 36, Port-au-Prince, et aussi à Technozi Haiti, Route Frère.' },
+              { name: 'Cap-Haïtien', image: '/cap-haitien.jpg', text: 'Rue 19 D, Cap-Haïtien.' },
+              { name: 'Ouanaminthe', image: '/ouanaminthe.jpg', text: '42, Rue vallières, Ouanaminthe.' },
+              { name: 'Les Cayes', image: '/cayes.jpg', text: 'Bourjolly #7, Route Nationale.' },
+              { name: 'Jérémie', image: '/jeremie.png', text: '#4, Source Dommage, Rue Jérémie.' }
+            ].map((agency, idx) => (
+              <motion.div 
+                key={agency.name}
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group w-full max-w-[340px]"
+              >
+                <div className="text-center py-3.5 bg-gray-50 border-b border-gray-100">
+                  <h3 className="text-lg font-bold text-[#022f4b]">{agency.name}</h3>
+                </div>
+                <div className="relative w-full aspect-video overflow-hidden bg-gray-100">
+                  <Image 
+                    src={agency.image} 
+                    alt={`Agence ${agency.name} WELJ`} 
+                    fill
+                    sizes="(max-width: 768px) 100vw, 340px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-4 flex flex-col flex-grow justify-between text-center bg-white">
+                  <p className="text-xs text-gray-600 font-medium leading-relaxed">
+                    {agency.text}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
             </div>
           )}
@@ -582,10 +513,10 @@ export default function Home() {
                           aria-label={branch.name}
                         >
                           <span 
-                            className={`w-3.5 h-3.5 rounded-full border-2 border-white shadow-md transition-all duration-500 ${
+                            className={`w-3.5 h-3.5 rounded-full border-2 shadow-md transition-all duration-500 ${
                               isActive 
-                                ? `${branch.badgeColor} scale-125 ring-4 ring-white/60` 
-                                : 'bg-white border-gray-300 hover:scale-110'
+                                ? 'bg-blue-500 border-white scale-125 ring-4 ring-blue-200/60' 
+                                : 'bg-transparent border-transparent'
                             }`}
                           ></span>
                         </button>
@@ -685,10 +616,10 @@ export default function Home() {
                           aria-label={branch.name}
                         >
                           <span 
-                            className={`w-3.5 h-3.5 rounded-full border-2 border-white shadow-md transition-all duration-500 ${
+                            className={`w-3.5 h-3.5 rounded-full border-2 shadow-md transition-all duration-500 ${
                               isActive 
-                                ? `${branch.badgeColor} scale-125 ring-4 ring-white/60` 
-                                : 'bg-white border-gray-300 hover:scale-110'
+                                ? 'bg-blue-500 border-white scale-125 ring-4 ring-blue-200/60' 
+                                : 'bg-transparent border-transparent'
                             }`}
                           ></span>
                         </button>

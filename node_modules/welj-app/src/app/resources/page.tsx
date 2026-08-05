@@ -105,10 +105,7 @@ export default function ResourcesPage() {
                 <h3 className="text-xl md:text-2xl font-bold text-[#022f4b] mb-4">
                   {t(tip.titleKey)}
                 </h3>
-                
-                {/* Underline matching the reference photo */}
-                <div className="w-full h-[3px] bg-[#e12229] rounded-full mb-5 opacity-90"></div>
-                
+
                 <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                   {t(tip.descriptionKey)}
                 </p>
