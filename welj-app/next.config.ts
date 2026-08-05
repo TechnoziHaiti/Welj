@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname, "..", ".."),
   },
+  serverExternalPackages: ["lightningcss"],
 };
 
 export default nextConfig;
