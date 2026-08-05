@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm install -f @tailwindcss/oxide-linux-x64-gnu lightningcss-linux-x64-gnu @tailwindcss/oxide-linux-x64-musl lightningcss-linux-x64-musl --no-save",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -19,13 +18,7 @@
     "nodemailer": "^9.0.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "typewriter-effect": "^2.22.0"
-  },
-  "optionalDependencies": {
-    "lightningcss-linux-x64-gnu": "^1.32.0",
-    "lightningcss-linux-x64-musl": "^1.32.0"
-  },
-  "devDependencies": {
+    "typewriter-effect": "^2.22.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/nodemailer": "^8.0.1",
@@ -35,5 +28,11 @@
     "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "optionalDependencies": {
+    "lightningcss-linux-x64-gnu": "^1.32.0",
+    "lightningcss-linux-x64-musl": "^1.32.0",
+    "@tailwindcss/oxide-linux-x64-gnu": "^4",
+    "@tailwindcss/oxide-linux-x64-musl": "^4"
   }
 }
