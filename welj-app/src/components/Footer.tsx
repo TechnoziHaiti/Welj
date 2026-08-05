@@ -150,7 +150,7 @@ export default function Footer() {
 
           {/* Téléchargez l'application */}
           <div>
-            <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-4">
+            <p className="text-red-600 text-[10px] font-bold uppercase tracking-widest mb-4">
               Application
             </p>
             <div className="space-y-3">
