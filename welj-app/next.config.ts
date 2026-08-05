@@ -2,10 +2,7 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: path.resolve(__dirname, "..", ".."),
-  },
-  serverExternalPackages: ["lightningcss"],
+  serverExternalPackages: ["lightningcss", "@tailwindcss/node", "@tailwindcss/postcss"],
 };
 
 export default nextConfig;
