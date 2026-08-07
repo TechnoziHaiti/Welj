@@ -7,25 +7,25 @@ import { useLanguage } from '@/context/LanguageContext';
 const tipsKeys = [
   {
     id: 1,
-    image: "/conseil_1.jpg",
+    image: "/c1.jpg",
     titleKey: "resources.tip1_title",
     descriptionKey: "resources.tip1_desc"
   },
   {
     id: 2,
-    image: "/conseil_2.jpg",
+    image: "/c2.jpg",
     titleKey: "resources.tip2_title",
     descriptionKey: "resources.tip2_desc"
   },
   {
     id: 3,
-    image: "/conseil_3.jpg",
+    image: "/c3.jpg",
     titleKey: "resources.tip3_title",
     descriptionKey: "resources.tip3_desc"
   },
   {
     id: 4,
-    image: "/conseil_4.jpg",
+    image: "/c4.jpg",
     titleKey: "resources.tip4_title",
     descriptionKey: "resources.tip4_desc"
   }

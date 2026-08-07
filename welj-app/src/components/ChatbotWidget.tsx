@@ -132,13 +132,13 @@ export default function ChatbotWidget() {
         {/* Header with Tabs integrated */}
         <div className="bg-white px-4 pt-4 pb-3 shrink-0 border-b border-gray-100">
           <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="WELJ Logo" className="h-8 object-contain" />
-              <div>
-                <h3 className="font-bold text-[15px] text-[#022f4b] leading-tight">{t('chatbot.title')}</h3>
+            <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
+              <img src="/logo.png" alt="WELJ Logo" className="h-8 w-auto max-w-[140px] object-contain shrink-0" />
+              <div className="min-w-0">
+                <h3 className="font-bold text-[15px] text-[#022f4b] leading-tight whitespace-nowrap">{t('chatbot.title')}</h3>
                 <div className="flex items-center gap-1.5 mt-0.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-                  <span className="text-[11px] text-gray-400 font-medium">En ligne</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0"></span>
+                  <span className="text-[11px] text-gray-400 font-medium whitespace-nowrap">En ligne</span>
                 </div>
               </div>
             </div>

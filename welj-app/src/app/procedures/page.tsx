@@ -9,17 +9,17 @@ const procedures = [
   {
     id: 1,
     iconImage: "/icone_procedure_1.png",
-    photo: "/procedure_1_new.png",
+    photo: "/a11.jpeg",
   },
   {
     id: 2,
     iconImage: "/icon_procedure_2.png",
-    photo: "/procedure_2.jpeg",
+    photo: "/a12.jpeg",
   },
   {
     id: 3,
     iconImage: "/icon_procedure_3_house_final.png",
-    photo: "/procedure_3.jpeg",
+    photo: "/a13.jpeg",
   }
 ];
 
