@@ -26,8 +26,8 @@ export const dictionaries = {
       branches_title: "Nos Entrepôts & Agences",
       branches_subtitle: "Retrouvez nos différentes agences en Haïti et nos entrepôts internationaux pour expédier et recevoir vos colis en toute sérénité.",
       branches_haiti: "Nos Agences en Haïti :",
-      partners_title: "Nos Fournisseurs",
-      partners_subtitle: "Welj facilite les achats sur les sites internet américains ainsi que la livraison de vos colis dans nos entrepôts sécurisés."
+      partners_title: "Plateforme d'achat",
+      partners_subtitle: "Vous trouverez la liste des e-commerce sur lesquels vous pourrez acheter et recevoir vos colis grace à Welj."
     },
     about: {
       title: "Qui sommes nous ?",
