@@ -48,7 +48,7 @@ const slides = [
   },
   {
     id: 2,
-    image: '/a9.jpeg',
+    image: '/a9.png',
     title: "",
     subtitle: "",
     showText: false,
@@ -57,7 +57,7 @@ const slides = [
   },
   {
     id: 3,
-    image: '/a17.jpeg',
+    image: '/a17.png',
     title: "",
     subtitle: "",
     showText: false,

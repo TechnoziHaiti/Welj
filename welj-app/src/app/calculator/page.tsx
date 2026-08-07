@@ -239,7 +239,7 @@ export default function CalculatorPage() {
                 <div className="flex items-center justify-between w-full sm:w-auto gap-8 sm:gap-16">
                   <div>
                     <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">{t('calc.est_time')}</p>
-                    <p className="font-semibold text-gray-700">15 jours Max</p>
+                    <p className="font-semibold text-gray-700">5 - 10 jours ouvrables Max</p>
                   </div>
                   <div className="text-right">
                     <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">{t('calc.total')}</p>
@@ -262,7 +262,7 @@ export default function CalculatorPage() {
                 <div className="flex items-center justify-between w-full sm:w-auto gap-8 sm:gap-16">
                   <div>
                     <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">{t('calc.est_time')}</p>
-                    <p className="font-semibold text-gray-700">15 - 22 jours</p>
+                    <p className="font-semibold text-gray-700">15 - 22 jours ouvrables</p>
                   </div>
                   <div className="text-right">
                     <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">{t('calc.total')}</p>
